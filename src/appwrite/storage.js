@@ -1,4 +1,4 @@
-import { config } from "../config/config";
+import config from "../config/config";
 import { Client, Databases, Storage, Query, ID } from "appwrite";
 
 const {
@@ -9,7 +9,7 @@ const {
   APPWRITE_BUCKET_ID,
 } = config;
 
-export class StorageService {
+class StorageService {
   client = new Client();
   databases;
   storage;
@@ -121,3 +121,7 @@ export class StorageService {
     }
   }
 }
+
+const storageService = new StorageService()
+
+export default storageService

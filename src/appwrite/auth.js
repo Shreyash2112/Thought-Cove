@@ -1,8 +1,8 @@
-import { config } from "../config/config";
+import config from "../config/config";
 import { Account, Client, ID } from "appwrite";
 
 const { APPWRITE_API_ENDPOINT, APPWRITE_PROJECT_ID } = config;
-export class AuthService {
+class AuthService {
   client = new Client();
   account;
 
@@ -35,17 +35,13 @@ export class AuthService {
 
   async userLogin({ email, password }) {
     try {
-      const session = await this.account.createEmailPasswordSession(
-        email,
-        password
-      );
-      return session;
+      return await this.account.createEmailPasswordSession(email, password);
     } catch (error) {
       throw new Error(error);
     }
   }
 
-  async userAuth() {
+  async userAuthenticated() {
     try {
       const isLoggedIn = await this.account.get();
       if (isLoggedIn) {
