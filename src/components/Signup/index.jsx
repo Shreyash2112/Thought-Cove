@@ -80,11 +80,6 @@ function Signup() {
                         type="password"
                         {...register("password", {
                             required: true,
-                            validate: {
-                                matchPattern: (value) => (
-                                    /^ (?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8, 16}$/.test(value) || "Password must be a valid password"
-                                )
-                            }
                         })}
                     />
 

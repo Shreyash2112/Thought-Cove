@@ -7,6 +7,7 @@ import { login, logout } from './store/authSlice'
 import { Footer, Header } from './components'
 
 import './App.css'
+import { Outlet } from 'react-router-dom'
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
         <div className='w-full block'>
           <Header />
           <main>
-            {/* <Outlet /> */}
+            <Outlet />
           </main>
           <Footer />
         </div>

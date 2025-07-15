@@ -27,7 +27,7 @@ export default function Post() {
         } else {
             navigate("/")
         }
-    }, [])
+    }, [navigate, slug])
 
     async function deletePost() {
         storageService.deletePost()
@@ -42,26 +42,27 @@ export default function Post() {
     return (
         <>
             {post &&
-                <div>
+                <div className="py-8">
                     <Container>
                         <img
                             src={storageService.getFilePreview(post.featuredImage)}
                             alt={post.title}
+                            className="rounded-xl"
                         />
 
                         {isAuthor && (
-                            <div>
+                            <div className="absolute right-6 top-6">
                                 <Link to={`/edit-post/${post.$id}`}>
-                                    <Button children="Edit" />
+                                    <Button children="Edit" bgColor="bg-green-500" className="mr-3" />
                                 </Link>
-                                <Button children="Delete" onClick={deletePost} />
+                                <Button children="Delete" onClick={deletePost} bgColor="bg-red-500" />
                             </div>
                         )}
 
-                        <div>
-                            <h1>{post.title}</h1>
+                        <div className="w-full mb-6">
+                            <h1 className="text-2xl font-bold">{post.title}</h1>
                         </div>
-                        <div>
+                        <div className="browser-css">
                             {parse(post.content)}
                         </div>
                     </Container>
