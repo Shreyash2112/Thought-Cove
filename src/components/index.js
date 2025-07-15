@@ -9,6 +9,9 @@ import PostCard from "./PostCard";
 import SelectBtn from "./SelectBtn";
 import Login from "./Login";
 import Signup from "./Signup";
+import ProtectedLayout from "./ProtectedLayout";
+import RTEditor from "./RTEditor";
+import PostForm from "./PostForm";
 
 export {
   Header,
@@ -22,4 +25,7 @@ export {
   SelectBtn,
   Login,
   Signup,
+  ProtectedLayout,
+  RTEditor,
+  PostForm,
 };
