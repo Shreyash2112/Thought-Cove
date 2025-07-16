@@ -20,7 +20,6 @@ function Signup() {
             if (user) {
                 const userData = await authService.userAuthenticated()
                 if (userData) {
-                    console.log(userData);
                     dispatch(login(userData))
                     navigate("/")
                 }
