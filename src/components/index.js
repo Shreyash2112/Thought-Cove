@@ -3,7 +3,6 @@ import Footer from "./Footer";
 import Container from "./Container";
 import Logo from "./Logo";
 import Button from "./Button";
-import LogoutBtn from "./Header/LogoutBtn";
 import Input from "./Input";
 import PostCard from "./PostCard";
 import SelectBtn from "./SelectBtn";
@@ -19,7 +18,6 @@ export {
   Container,
   Logo,
   Button,
-  LogoutBtn,
   Input,
   PostCard,
   SelectBtn,
