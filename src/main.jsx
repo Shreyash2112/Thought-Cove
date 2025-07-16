@@ -7,13 +7,23 @@ import store from './store/store.js'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { ProtectedLayout } from './components/index.js'
 
-import { AddPost, AllPosts, EditPost, Home, Login, Post, Signup } from "./pages"
+import Home from "./pages/Home.jsx"
+import Login from "./pages/Login.jsx"
+import Signup from "./pages/Signup.jsx"
+import AllPosts from './pages/AllPosts.jsx'
+import AddPost from "./pages/AddPost.jsx"
+import EditPost from "./pages/EditPost.jsx"
+import Post from "./pages/Post.jsx"
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        path: "/",
+        element: < Home />
+      },
       {
         path: "/login",
         element: (
@@ -56,7 +66,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/post/:slug",
-        element: <post />
+        element: <Post />
       }
     ]
   }

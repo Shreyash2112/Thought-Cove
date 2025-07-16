@@ -112,9 +112,9 @@ class StorageService {
     }
   }
 
-  async getFilePreview(fileId) {
+  getFilePreview(featuredImage) {
     try {
-      return await this.storage.getFilePreview(APPWRITE_BUCKET_ID, fileId);
+      return this.storage.getFileView(APPWRITE_BUCKET_ID, featuredImage);
     } catch (error) {
       console.error(error);
       return false;
@@ -122,6 +122,6 @@ class StorageService {
   }
 }
 
-const storageService = new StorageService()
+const storageService = new StorageService();
 
-export default storageService
+export default storageService;

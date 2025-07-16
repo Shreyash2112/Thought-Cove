@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import storageService from "../../appwrite/storage"
 
-function PostCard({ $id, title, featuredImage }) {
+function PostCard({ featuredImage, title, $id }) {
     return (
         <Link to={`/post/${$id}`}>
             <div className="w-full bg-gray-100 rounded-xl p-4">

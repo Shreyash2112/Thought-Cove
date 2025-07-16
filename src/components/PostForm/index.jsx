@@ -40,7 +40,7 @@ export default function PostForm({ post }) {
 
             if (file) {
                 const fileId = file.$id
-                data.featuredImage - fileId
+                data.featuredImage = fileId
                 const dbPost = await storageService.createPost({
                     ...data,
                     userId: userData.$id
@@ -58,7 +58,8 @@ export default function PostForm({ post }) {
             return value
                 .trim()
                 .toLowerCase()
-                .replace(/^[a-zA-Z\d]+/g, '-')
+                .replace(/[^a-zA-Z\d\s]+/g, "-")
+                .replace(/\s/g, "-");
         }
         return ""
     }, [])

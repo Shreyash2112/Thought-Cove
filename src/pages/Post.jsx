@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import storageService from "../appwrite/storage";
-import { Button } from "../components";
+import { Button, Container } from "../components";
 import parse from "html-react-parser"
 
 export default function Post() {
@@ -29,8 +29,8 @@ export default function Post() {
         }
     }, [navigate, slug])
 
-    async function deletePost() {
-        storageService.deletePost()
+    function deletePost() {
+        storageService.deletePost(post.$id)
             .then((status) => {
                 if (status) {
                     storageService.deleteFile(post.featuredImage)
@@ -45,7 +45,7 @@ export default function Post() {
                 <div className="py-8">
                     <Container>
                         <img
-                            src={storageService.getFilePreview(post.featuredImage)}
+                            src={storageService.getFilePreview(post?.featuredImage)}
                             alt={post.title}
                             className="rounded-xl"
                         />
@@ -63,7 +63,7 @@ export default function Post() {
                             <h1 className="text-2xl font-bold">{post.title}</h1>
                         </div>
                         <div className="browser-css">
-                            {parse(post.content)}
+                            {parse(String(post.content))}
                         </div>
                     </Container>
                 </div>

@@ -1,7 +1,7 @@
 import config from "../config/config";
 import { Account, Client, ID } from "appwrite";
 
-const { APPWRITE_API_ENDPOINT, APPWRITE_PROJECT_ID } = config;
+const { APPWRITE_API_ENDPOINT, APPWRITE_PROJECT_ID, APPWRITE_DEV_KEY } = config;
 class AuthService {
   client = new Client();
   account;
@@ -18,13 +18,13 @@ class AuthService {
     try {
       const userAccount = await this.account.create(
         ID.unique(),
-        name,
         email,
-        password
+        password,
+        name
       );
 
       if (userAccount) {
-        this.userLogin({ email, password });
+        return this.userLogin({ email, password });
       } else {
         return userAccount;
       }

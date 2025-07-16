@@ -25,7 +25,7 @@ function Login() {
                 }
             }
         } catch (error) {
-            setError(error)
+            setError(error.message)
         }
     }
 
@@ -41,7 +41,7 @@ function Login() {
                 <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
 
                 <p className="mt-2 text-center text-base text-black/60">
-                    Don&apos;t have any account? &nbsp
+                    Don&apos;t have any account? &nbsp;
                     <Link
                         to="/signup"
                         className="font-medium text-primary transition-all duration-200 hover:underline">
@@ -73,12 +73,12 @@ function Login() {
                             placeholder="Enter your password"
                             type="password"
                             {...register("password", {
-                                required: true,
-                                validate: {
-                                    matchPattern: (value) => (
-                                        /^ (?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8, 16}$/.test(value) || "Password must be a valid password"
-                                    )
-                                }
+                                // required: true,
+                                // validate: {
+                                //     matchPattern: (value) => (
+                                //         /^ (?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8, 16}$/.test(value) || "Password must be a valid password"
+                                //     )
+                                // }
                             })}
                         />
 
