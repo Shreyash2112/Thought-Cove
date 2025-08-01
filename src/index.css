@@ -1,1 +1,12 @@
 @import "tailwindcss";
+
+@theme {
+  --color-background: #1a1a1d;
+  --color-header: #000000;
+}
+
+@layer base {
+  body {
+    @apply text-gray-200;
+  }
+}

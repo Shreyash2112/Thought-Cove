@@ -42,7 +42,7 @@ export default function Post() {
     return (
         <>
             {post &&
-                <div className="py-8">
+                <div className="py-8 relative">
                     <Container>
                         <img
                             src={storageService.getFilePreview(post?.featuredImage)}
@@ -51,11 +51,11 @@ export default function Post() {
                         />
 
                         {isAuthor && (
-                            <div className="absolute right-6 top-6">
+                            <div className="absolute right-10 top-10">
                                 <Link to={`/edit-post/${post.$id}`}>
-                                    <Button children="Edit" bgColor="bg-green-500" className="mr-3" />
+                                    <Button children="Edit" bgColor="bg-green-600 rounded-full cursor-pointer" className="mr-3" />
                                 </Link>
-                                <Button children="Delete" onClick={deletePost} bgColor="bg-red-500" />
+                                <Button children="Delete" onClick={deletePost} bgColor="bg-red-600 rounded-full cursor-pointer" />
                             </div>
                         )}
 

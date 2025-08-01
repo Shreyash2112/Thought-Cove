@@ -79,8 +79,8 @@ export default function PostForm({ post }) {
     }, [watch, slugTransform, setValue])
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-col gap-2 md:gap-6 ">
+            <div className="w-full px-2">
                 <Input
                     label="Title: "
                     placeholder="Enter title"
@@ -98,16 +98,16 @@ export default function PostForm({ post }) {
                 />
                 <RTEditor label="Content:" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="flex flex-col gap-6 justify-center md:flex md:flex-row md:gap-5 md:mt-10 w-full md:w-full px-2 items-center">
                 <Input
                     label="Featured Image :"
                     type="file"
-                    className="mb-4"
+                    className="md:mb-7 w-2/3 "
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
                 {post && (
-                    <div className="w-full mb-4">
+                    <div className="w-full">
                         <img
                             src={storageService.getFilePreview(post.featuredImage)}
                             alt={post.title}
@@ -119,14 +119,14 @@ export default function PostForm({ post }) {
                 <SelectBtn
                     options={["active", "inactive"]}
                     label="Status"
-                    className="mb-4"
+                    className="bg-header/50 w-2/3"
                     {...register("status", { required: true })}
                 />
 
                 <Button
                     type="submit"
                     bgColor={post ? "bg-green-500" : undefined}
-                    className="w-full"
+                    className="w-full rounded-lg"
                     children={post ? "Update" : "Submit"}
                 />
             </div>

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import authService from "./appwrite/auth"
 import { login, logout } from './store/authSlice'
 
-import { Footer, Header } from './components'
+import { Footer, Header, Logo } from './components'
 
 import './App.css'
 import { Outlet } from 'react-router-dom'
@@ -26,21 +26,27 @@ function App() {
       })
       .catch((e) => console.error(e), dispatch(logout()))
       .finally(() => setLoading(false))
-  }, [])
+  }, [dispatch])
 
-  return loading ?
-    (<h3>Loading...</h3>) :
-    (
-      <div className='min-h-screen flex flex-wrap content-between bg-gray-400 '>
-        <div className='w-full block'>
-          <Header />
-          <main>
-            <Outlet />
-          </main>
-          <Footer />
-        </div>
-      </div>
-    )
+  return (
+    <div>
+      {
+        loading ?
+          (<h1 className='min-h-svh flex items-center justify-center bg-background '><Logo width={300}/></h1>) :
+          (
+            <div className='min-h-svh flex flex-wrap content-between bg-background'>
+              <div className='min-h-svh flex flex-col w-full '>
+                <Header />
+                <main className='flex-grow mt-16'>
+                  <Outlet />
+                </main>
+                <Footer />
+              </div>
+            </div>
+          )
+      }
+    </div>
+  )
 }
 
 export default App
